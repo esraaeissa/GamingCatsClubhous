@@ -1,0 +1,103 @@
+@import
+url('https://fonts.googleapis.com/css?family=Akronim|Asap+Condensed|Luckiest+Guy');
+:root {
+	--bgwhite: #fff;	
+    --sherblue: #093D6D;
+    --sherteal: #1AC6D9;
+    --sherorange: #ff5C10;
+	--fontfam: 'Luckiest Guy', cursive;
+	--fontbody: 'Asap Condensed', sans-serif;
+	--fonttitle: 'Akronim', cursive;
+	--gap-sm: 5px;
+	--gap-md: 10px;
+	--gap-lg: 25px;
+}
+html, body, main, nav, header, footer, aside, h1, .flex-container {
+    box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+	display: block;
+}
+h2{
+	font-size : 16 px ; 
+	font-weight: bold ; 
+} 
+body {
+    background-image: url('../images/sher_lightb.jpg');
+    background-repeat: repeat; 
+	font-family: var(--fontbody);	
+}
+/* position needs to be non-static to allow the positioning of the images relative to its parent */
+main, nav, aside {
+    background-color: var(--bgwhite); 
+    padding: var(--gap-sm); 
+	position: relative;
+}
+
+footer {
+	border-top: 7px solid ;
+	color: var(--sherblue);
+	padding-top: var(--gap-sm);
+	text-align: center;
+}
+header {
+    border-bottom: 27px solid var(--sherblue);
+	padding: 10px;
+    text-align: center;
+}
+/* major heading for the project on all pages */
+header h1 {
+    color: var(--sherblue);
+    font-family: var(--fonttitle);
+    font-size: 7vw; /* check out the vw units */
+    text-shadow: 1px 1px 2px var(--sherorange), 3px 3px 4px var(--bgwhite);
+}
+
+nav {
+	position: relative; 
+	left: 0px ; 
+	width: 200px ; 
+} 
+main{
+	position: relative; 
+	min-width: 700px ;
+} 
+aside {
+	position: relative; 
+	right: 0px ;
+	width: 500px;
+    padding-right: 15px;
+	text-align: justify;
+	overflow-y: scroll;
+	max-height: 400px;
+	width: 100% ;
+}
+/* used (class, not element) for headings in the <aside> element */
+aside .h4  { 
+  text-align: left ;
+  font-size: 1.2em; 
+  font-weight: 700; 
+  margin: 1em 0 0 0 ; 
+}
+
+.flex-container{
+	display: flex ;
+	min-height: 400 px; 
+	padding-bottom: 10 px; 
+	background-color: white; 
+} 
+@media screen and (min-width: 900px){.flex-container{
+	flex-direction: row; 
+}
+}
+@media screen and (max-width: 900px){.flex-container{
+	flex-direction: column; 
+} 
+}
+
+
+
+
+
+	
+

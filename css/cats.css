@@ -1,0 +1,75 @@
+img {
+  position: absolute;
+}
+/* example of the first cat positioning; can you figure out the rest? */
+.two {
+  top: -5px;
+  left: -90px;
+    z-index: 9;
+}
+/* note that you need a media query to reposition the images when the
+   width of the screen decreases */
+
+.one {
+top: -60px;
+left: -20px;
+z-index: 9;
+}
+.three {
+top: 310px;
+left: -20px;
+z-index: 9;
+}
+.four {
+top: 310px;
+left: 8px;
+z-index: 8;
+}
+.five {
+top: 275px;
+left: 120px;
+z-index: 9;
+}
+.six {
+top: 285px;
+left: 700px;
+z-index: 9;
+}
+@media screen and (max-width: 900px) {
+  .one {
+		top: -450px;
+		left: 150px;
+		width: 15%;
+		height: 15%;
+	}
+	.two {
+		top: -405px;
+		left: 90px;
+		width: 15%;
+		height: 25%;
+	}
+		.three {
+		top: 610px;
+		left: 100px;
+		width: 10%;
+		height: 30%;
+	}
+		.four {
+		top: 608px;
+		left: 130px;
+		width: 10%;
+		height: 25%;
+	}
+		.five {
+		top: 605px;
+		left: 280px;
+		width: 15%;
+		height: 25%;
+	}
+		.six {
+		top: 605px;
+		left: 500px;
+		width: 15%;
+		height: 25%;
+	}
+}

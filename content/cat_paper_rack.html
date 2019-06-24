@@ -1,0 +1,264 @@
+<!DOCTYPE html> 
+<html> 
+<head> 
+<meta charset="utf-8"> 
+<title> CAT Paper Rack </title> 
+<link rel="stylesheet" href="../css/template.css">
+<link rel="stylesheet" href="../css/grid.css"> 
+</head> 
+<body> 
+<header> 
+<h1>Gaming Cat's Clubhouse</h1>
+</header> 
+<div class="flex-container">
+<div class="column" style="order: 1; flex-grow: 1">
+	<nav>
+<button><a href="../index.html">HOME</a></button>
+<button><a href="tic_tac_toe.html">Tic CAT Toe</a></button>
+<button><a href="catsino_craps.html">CATsino Craps</a></button>
+<button><a href="cat_paper_rack.html">CAT Paper Rack</a></button>
+<button><a href="cat_scrabble.html">CAT Scrabble</a></button>
+	</nav>
+</div>
+<div class="column" style="order: 2; flex-grow: 3">
+				<main>
+          <h2>Play &mdash; Rock Paper Scissors Lizard Spock</h2>
+          <div class="grid-container">
+            <div id="userSelection">
+           <div class="grid-item">
+
+ <dl class="gallery" data-human-choice="paper">
+     <dt class="selection" id="paper">
+ <img src="../images/paper.png" alt="paper" onclick="playWith('paper')">
+     </dt>
+ <dt>paper</dt>
+ <dd class="tooltip">
+   <hr>covers rock<br>and<br>disproves Spock
+ <span class="tooltiptext">
+     PAPER<br>covers rock<br>and<br>disproves Spock</span>
+ </dd>
+ </dl>
+<dl class="gallery" data-human-choice="stone">
+  <dt class="selection" id="stone">
+<img src="../images/rock.png" alt="stone" onclick="playWith('stone')"></dt>
+<dt>stone</dt>
+   <dd class="tooltip">
+  <hr>covers rock<br>and<br>disproves Spock
+   <span class="tooltiptext">
+   PAPER<br>covers rock<br>and<br>disproves Spock</span>
+  </dd>
+ </dl>
+ <dl class="gallery" data-human-choice="scissors">
+   <dt class="selection" id="scissor">
+  <img src="../images/scissors.png" alt="scissors" onclick="playWith('scissor')"></dt>
+  <dt>scissors</dt>
+ <dd class="tooltip">
+ <hr>covers rock<br>and<br>disproves Spock
+<span class="tooltiptext">
+  PAPER<br>covers rock<br>and<br>disproves Spock</span>
+ </dd>
+ </dl>
+<dl class="gallery" data-human-choice="lizard">
+ <dt class="selection" id="lizard">
+  <img src="../images/lizard.png" alt="lizard" onclick="playWith('lizard')"></dt>
+ <dt>lizard</dt>
+ <dd class="tooltip">
+ <hr>covers rock<br>and<br>disproves Spock
+   <span class="tooltiptext">
+ PAPER<br>covers rock<br>and<br>disproves Spock</span>
+   </dd>
+ </dl>
+ <dl class="gallery" data-human-choice="spock">
+ <dt class="selection" id="spock">
+  <img src="../images/spock.png" style="height:60px" alt="spock" onclick="playWith('spock')"></dt>
+   <dt>spock</dt>
+ <dd class="tooltip">
+ <hr>smashes scissors<br>and<br>vaporizes rock
+ <span class="tooltiptext">SPOCK<br>smashes scissors<br>and
+   <br>vaporizes rock</span>
+  </dd>
+  </dl>
+ <p>Click on the image to select it.</p>
+ </div>
+<div class="grid-item-1">
+  <button id="greset" onclick="playGame()">Play game</button>
+   <div id="result"></div>
+ </div>
+  </div>
+ </div>
+
+</main>
+</div>
+<div class="column" style="order: 3; flex-grow: 1">
+<aside>
+<ul>How to Play Tic Tac Toe
+<li><p>Tic-tac-toe is a fun game that you can play any time and anywhere as long as you
+              have a piece of paper, a pencil, and an opponent. Tic-tac-toe is a zero sum game,
+              which means that if both players are playing their best, that neither player will win.
+              However, if you learn how to play tic-tac-toe and master some simple strategies,
+              then you'll be able to not only play, but to win the majority of the time.
+              If you want to know how to play tic-tac-toe, then see Step 1 to get started.</p>
+<li><p>1. Draw the board. First, you have to draw the board, which is made up of a 3 x 3 grid of squares. This means it has three rows of three squares. Some people play with a 4 x 4 grid, but that is for more advanced players, and we will focus on the 3 x 3 grid here.</p>
+</li>
+<li><p>2. Have the first player go first. Though traditionally, the first player goes with "X", you can allow the first player to decide whether he wants to go with "X"s or "O"s. These symbols will be placed on the table, in the attempt to have three of them in a row. If you're going first, then the best move you can make is to move into the center. This will maximize your chances of winning, since you'll be able to create a row of three "X"s or "O"s in more combinations (4) this way than if you chose a different square.</p></li>
+</li>
+</ul>
+</aside>
+</div>
+</div>
+</div>
+<footer >
+   <address> 
+   eissa, SYST10199 Web Programming , Summer 2019 Sheridan Collage 
+   </address> 
+ </footer> 
+ <script>
+      
+      var userOption = undefined;
+      var userChoice;
+      var computerOption;
+      var winner;
+      var victory;
+      var resultMessage;
+
+      var WinList = {
+              rock: {scissors:'crushes', lizard:'crushes'},
+              paper: {rock:'covers', spock:'disproves'},
+              scissors: {paper:'cuts', lizard:'decapitates'},
+              lizard: {spock:'poisons', paper:'eats'},
+              spock: {rock:'vaporizes', scissors:'smashes'}
+             }
+      function playWith(Option){
+            if (userOption != undefined)
+              {
+                userOption = Option;
+                computerOption = rndMove();
+                winner = (WinList[userOption][computerOption]) ? userOption : computerOption;
+
+                var loser = (winner == userOption) ? computerOption : userOption;
+                resultMessage = (winner == userOption) ? 'You Win! ' : 'Computer Wins! ';
+                resultMessage += winner + ' ' + WinList[winner][loser] + ' ' + loser + '.';
+                if (userOption == computerOption) { resultMessage = 'Tie.'; }
+
+                return resultMessage;
+            }else{
+                return "unknown yet.";
+            }
+          }
+
+      function playGame(){
+            document.getElementById("result").innerHTML =
+      			"<p>User select: " + userOption + " - Computer select:"
+      			+ computerOption + "</p> <p>" + resultMessage + "</p>";
+          }
+
+      function evaluateMove() {
+
+             var move=playWith(Option);
+             if (move == 'Random'){ move = rndMove(); }
+
+             var cpuMove = rndMove();
+             document.getElementById('move').innerHTML = move;
+             document.getElementById('cpuMove').innerHTML = cpuMove;
+
+             var winner = (WinList[move][cpuMove]) ? move : cpuMove;
+             var loser = (winner == move) ? cpuMove : move;
+             var result = (winner == move) ? 'You Win! ' : 'Computer Wins! ';
+             result += winner + ' ' + WinList[winner][loser] + ' ' + loser + '.';
+             if (move == cpuMove) { result = 'Tie.'; }
+             document.getElementById('winner').innerHTML = result;
+           }
+
+      var choices  =  {rock : {name: "rock", defeats: ["scissor","lizard"]},
+                       paper: {name: "paper", defeats: ["rock", "spock"]},
+                       scissors: {name: "scissor", defeats: ["paper", "lizard"]},
+                       lizard: {name: "lizard", defeats:["paper","spock"]},
+                       spock: {name: "spock", defeats:["scissor","rock"]}
+                      };
+
+      function playWith333(option){
+         if (userOption != undefined)
+         {
+            userSelectionElement = document.getElementById(userOption);
+           
+            userSelectionElement.style.border = "5px #F8F8F8  solid";
+         }
+         
+         userOption = option;
+         userChoice=choices[option];
+
+         userSelectionElement = document.getElementById(option);
+         userSelectionElement.style.border = "5px #990066 solid";
+      }
+
+      
+      function rndMove() {
+        var moveList = new Array('rock','paper','scissor','lizard','spock');
+        return moveList[Math.floor((Math.random()*5))];
+      }
+
+     
+          function compare(userSelection, computerSelection)
+      		{
+
+            if(userSelection == undefined)
+      			{
+      				return "Please, select an option before play"
+      			}
+
+      		    if (userSelection == computerSelection)
+      		    {
+      		       return "It is a tie!";
+      		    }
+
+              if(victory) {
+                  return "Vitory! " + userChoice.name + " wins!";
+              }else{
+                  return "Defeat, " + computerChoice + " wins!";
+              }
+      		}
+          function compare1(userSelection, computerSelection)
+      		{
+      			if(userSelection == undefined)
+      			{
+      				return "Please, select an option before play"
+      			}
+
+      		    if (userSelection == computerSelection)
+      		    {
+      		       return "It is a tie!";
+      		    }
+
+      		    if (userSelection == "stone")
+      		    {
+      		        if (computerSelection == "scissor")
+      		        {
+      		             return "You win.";
+      		        } else {
+      		            return "The computer win. Try again.";
+      		        }
+
+      		    } else if (userSelection == "paper") {
+
+      		        if (computerSelection == "stone")
+      		        {
+      		             return "You win." ;
+      		        } else if("scissor") {
+      		            return "The computer win. Try again." ;
+      		        }
+
+      		    } else if (userSelection == "scissor") {
+
+      		        if (computerSelection == "stone")
+      		        {
+      		            return "The computer win. Try again.";
+      		        }else{
+      		            return "You win.";
+      		        }
+      		    }
+      		}
+  </script>
+
+
+</body> 
+</html> 
